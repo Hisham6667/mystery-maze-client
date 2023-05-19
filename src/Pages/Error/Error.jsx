@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from './../../assets/error.png'
+import logo from './../../assets/images/error.png'
 
 const Error = () => {
     return (
