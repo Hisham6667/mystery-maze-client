@@ -15,7 +15,7 @@ const Navbar = () => {
     // const user = "hisham"
     const user = null
     return (
-        <div className="navbar flex justify-between border-4">
+        <div className="navbar flex justify-between">
 
             <div className='flex justify-around items-center'>
                 <img className='w-10 lg:w-14 border border-red-400 rounded-full shadow mr-5 p-1' src={logo} alt="" />
