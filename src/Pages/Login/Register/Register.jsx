@@ -12,11 +12,11 @@ const Register = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    // if(loading){
-    //     return <div className='h-96 flex justify-center items-center'>
-    //         <progress className='progress progress-error w-48'></progress>
-    //     </div>
-    // }
+    if(loading){
+        return <div className='h-96 flex justify-center items-center'>
+            <progress className='progress progress-error w-48'></progress>
+        </div>
+    }
 
     const handleRegister = event => {
         event.preventDefault()
