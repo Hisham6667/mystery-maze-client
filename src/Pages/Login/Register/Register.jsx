@@ -54,7 +54,7 @@ const Register = () => {
 
     return (
         <div className="w-full">
-            <form onSubmit={handleRegister} className="w-2/3 md:w-1/3 mx-auto py-10 px-5 shadow-md border-t-red-500 border-t rounded-xl">
+            <form onSubmit={handleRegister} className="w-2/3 md:w-1/3 mx-auto py-10 px-5 shadow-md border-t-red-500 border-t rounded-xl"  data-aos="zoom-in">
 
                 <div className='w-full mb-5'>
                     <p className='text-red-500 text-4xl text-center font-medium'>Register Now !</p>
