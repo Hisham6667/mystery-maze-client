@@ -3,8 +3,6 @@ import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
     return (
-        <div>
-
             <div className="w-full">
                 <form className="w-2/3 md:w-1/3 mx-auto py-10 px-5 shadow-md border-t-red-500 border-t rounded-xl">
                     <div className='w-full mb-5'>
@@ -34,7 +32,6 @@ const Login = () => {
                     </div>
                 </form>
             </div>
-        </div>
     );
 };
 
