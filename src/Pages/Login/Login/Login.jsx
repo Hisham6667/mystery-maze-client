@@ -25,7 +25,6 @@ const Login = () => {
         const pass = form.password.value;
         setError('')
         setSuccess('')
-        console.log(email, pass);
 
         signUser(email, pass)
             .then(result => {
