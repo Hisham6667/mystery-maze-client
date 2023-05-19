@@ -2,6 +2,8 @@ import logo from '../../../assets/images/logo.png';
 import userPic from '../../../assets/images/user.png';
 import { AiOutlineExport, AiOutlineImport, AiOutlineMenu } from "react-icons/ai";
 import ActiveLink from './ActiveLink';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
 
@@ -12,8 +14,8 @@ const Navbar = () => {
     const navLink5 = <ActiveLink to='/addatoy'>Add a Toy</ActiveLink>
     const navLink6 = <ActiveLink to='/login'>Login</ActiveLink>
 
-    // const user = "hisham"
-    const user = null
+    const {user} = useContext(AuthContext);
+    
     return (
         <div className="navbar flex justify-between">
 
@@ -22,8 +24,8 @@ const Navbar = () => {
                 <p className='text-xl lg:text-3xl font-bold'><span className='text-red-500'>M</span>ystery <span className='text-red-500'>M</span>aze</p>
             </div>
 
-            <div className='tooltip tooltip-error tooltip-bottom' data-tip={user ? "Hisham" : 'No user'}>
-                <img className='w-10 lg:w-14 border border-red-400 rounded-full shadow p-1' src={user ? userPic : logo} alt="" />
+            <div className='tooltip tooltip-error tooltip-bottom w-10 lg:w-14' data-tip={user ? (user.displayName ? user.displayName : user.email) : 'No user'}>
+                <img className='w-10 lg:w-14 border border-red-400 rounded-full shadow p-1' src={user ? (user.photoURL ? user.photoURL : userPic) : logo} alt="" />
             </div>
 
             <div className="hidden lg:flex">

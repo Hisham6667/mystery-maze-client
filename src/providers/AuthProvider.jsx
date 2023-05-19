@@ -22,6 +22,7 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         const unSub = onAuthStateChanged(auth, currentUser => {
+            console.log('from auth state', currentUser);
             setUser(currentUser);
             setLoading(false)
         })
