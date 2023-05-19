@@ -19,7 +19,7 @@ const Navbar = () => {
 
             <div className='flex justify-around items-center'>
                 <img className='w-10 lg:w-14 border border-red-400 rounded-full shadow mr-5 p-1' src={logo} alt="" />
-                <p className='text-xl lg:text-3xl'><span className='text-red-500'>M</span>ystery <span className='text-red-500'>M</span>aze</p>
+                <p className='text-xl lg:text-3xl font-bold'><span className='text-red-500'>M</span>ystery <span className='text-red-500'>M</span>aze</p>
             </div>
 
             <div className='tooltip tooltip-error tooltip-bottom' data-tip={user ? "Hisham" : 'No user'}>

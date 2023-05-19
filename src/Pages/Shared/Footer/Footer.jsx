@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="footer p-4 flex justify-between items-center flex-col lg:flex-row border-t border-red-300">
             <div className="flex items-center">
                 <img className='w-14 mr-5' src={logo} alt="" />
-                <p className='text-lg lg:text-xl'>Copyright © 2023 - All right reserved by <span className='text-red-500'>M</span>ystery <span className='text-red-500'>M</span>aze LTD.</p>
+                <p className='text-lg lg:text-xl font-semibold'>Copyright © 2023 - All right reserved by <span className='text-red-500'>M</span>ystery <span className='text-red-500'>M</span>aze LTD.</p>
             </div>
 
 
