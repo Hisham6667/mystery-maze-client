@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Banner = () => {
     return (
-        <div className="card w-3/4 h-96 mx-auto image-full mb-20">
+        <div className="card w-3/4 h-96 mx-auto image-full mb-20" data-aos="zoom-in" data-aos-duration="500">
             <figure>
                 <img className='w-full' src={banner} alt="Shoes" />
             </figure>

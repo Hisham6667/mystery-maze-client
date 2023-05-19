@@ -10,7 +10,7 @@ const Gallery = () => {
             <div className='mb-8'>
                 <p className='text-2xl lg:text-5xl font-bold text-center'>Featured <span className='text-red-500'>P</span>uzzles & <span className='text-red-500'>B</span>oard games</p>
             </div>
-            <div className="carousel w-5/6 h-96 mx-auto">
+            <div className="carousel w-5/6 h-96 mx-auto" data-aos="fade-up" data-aos-duration="500">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={slide1} className="w-full" />
                     <div className="absolute flex justify-between left-5 right-5 top-1/2">
