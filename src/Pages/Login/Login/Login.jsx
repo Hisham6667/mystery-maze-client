@@ -4,7 +4,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { FcGoogle, FcHighPriority, FcOk } from "react-icons/fc";
 
 const Login = () => {
-    const { signUser, loading } = useContext(AuthContext);
+    const { signUser, loading, googleLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const location = useLocation();
@@ -34,6 +34,18 @@ const Login = () => {
                 setError('')
                 setSuccess('Profile login successful')
                 form.reset();
+                navigate(from, {replace:true})
+            })
+            .catch(error => setError(error.message))
+    }
+    
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('')
+                setSuccess('Google login successful')
                 navigate(from, {replace:true})
             })
             .catch(error => setError(error.message))
@@ -71,7 +83,7 @@ const Login = () => {
 
                 <div className='text-center mb-5'>OR</div>
                 <div className="form-control">
-                    <button className="border border-blue-500 p-3 rounded-xl text-xl hover:border-white hover:bg-blue-500 hover:text-white transition-all active:border-blue-500 active:bg-white active:text-black flex items-center justify-center mb-6">Sign in with <FcGoogle className='text-xl ml-3' /></button>
+                    <button onClick={handleGoogleLogin} className="border border-blue-500 p-3 rounded-xl text-xl hover:border-white hover:bg-blue-500 hover:text-white transition-all active:border-blue-500 active:bg-white active:text-black flex items-center justify-center mb-6">Sign in with <FcGoogle className='text-xl ml-3' /></button>
                 </div>
 
                 <div className='text-center'>
