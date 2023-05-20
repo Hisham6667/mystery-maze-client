@@ -11,7 +11,7 @@ const SingleToy = ({ toy }) => {
             <td><p className="flex items-center"><RiMoneyDollarCircleLine className="mr-2 text-red-400" />{price}</p></td>
             <td className="text-center"><b>{quantity_available}</b> pieces in stock</td>
             <td className="text-center">
-                <Link>
+                <Link to={`${_id}`}>
                     <button className="btn btn-outline btn-error">details<HiArrowSmallRight/></button>
                 </Link>
             </td>
