@@ -1,18 +1,18 @@
 import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
-import { FcHighPriority, FcOk } from "react-icons/fc";
+import { FcHighPriority } from "react-icons/fc";
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { createUser, loading } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
-    if(loading){
+    if (loading) {
         return <div className='h-96 flex justify-center items-center'>
             <progress className='progress progress-error w-48'></progress>
         </div>
@@ -26,17 +26,26 @@ const Register = () => {
         const pass = form.password.value;
         const url = form.url.value;
         setError('')
-        setSuccess('')
         console.log(name, email, pass, url);
 
         // validation
         if (name.length < 4) {
-            setError('your name should be 4 characters');
-            return
+            setError('Your name should be 4 characters');
+            return Swal.fire({
+                icon: 'error',
+                title: 'Your name should be 4 characters',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }
         if (pass.length < 6) {
-            setError('your pass should be at least 6 characters');
-            return
+            setError('Your pass should be at least 6 characters');
+            return Swal.fire({
+                icon: 'error',
+                title: 'Your pass should be at least 6 characters',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }
 
 
@@ -45,16 +54,29 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setError('')
-                setSuccess('Profile creation successful')
                 form.reset();
-                navigate(from, {replace:true})
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Profile creation successful',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                navigate(from, { replace: true })
             })
-            .catch(error => setError(error.message))
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: (error.message),
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                setError(error.message)
+            })
     }
 
     return (
         <div className="w-full">
-            <form onSubmit={handleRegister} className="w-2/3 md:w-1/3 mx-auto py-10 px-5 shadow-md border-t-red-500 border-t rounded-xl"  data-aos="zoom-in">
+            <form onSubmit={handleRegister} className="w-2/3 md:w-1/3 mx-auto py-10 px-5 shadow-md border-t-red-500 border-t rounded-xl" data-aos="zoom-in">
 
                 <div className='w-full mb-5'>
                     <p className='text-red-500 text-4xl text-center font-medium'>Register Now !</p>
@@ -88,11 +110,8 @@ const Register = () => {
                     <input type="url" name='url' placeholder="Type Your photo url" className="input focus:outline-none focus:bg-red-100/30" required />
                 </div>
 
-                {success && <div className='text-center text-success mb-4 flex justify-center items-center'>
-                    <FcOk className='mr-3 text-xl'/>{success}
-                </div>}
                 {error && <div className='text-center text-error mb-4 flex justify-center items-center'>
-                    <FcHighPriority className='mr-3 text-xl'/>{error}
+                    <FcHighPriority className='mr-3 text-xl' />{error}
                 </div>}
 
                 <div className="form-control mb-5">

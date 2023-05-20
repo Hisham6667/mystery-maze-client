@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
-import { FcGoogle, FcHighPriority, FcOk } from "react-icons/fc";
+import { FcGoogle, FcHighPriority } from "react-icons/fc";
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signUser, loading, googleLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -24,18 +24,30 @@ const Login = () => {
         const email = form.email.value;
         const pass = form.password.value;
         setError('')
-        setSuccess('')
 
         signUser(email, pass)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setError('')
-                setSuccess('Profile login successful')
                 form.reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Welcome back! Profile login successful',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 navigate(from, {replace:true})
             })
-            .catch(error => setError(error.message))
+            .catch(error => {
+                setError(error.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: (error.message),
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            })
     }
     
     const handleGoogleLogin = () => {
@@ -44,10 +56,23 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setError('')
-                setSuccess('Google login successful')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Google login successful',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 navigate(from, {replace:true})
             })
-            .catch(error => setError(error.message))
+            .catch(error => {
+                setError(error.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: (error.message),
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            })
     }
 
     return (
@@ -69,9 +94,6 @@ const Login = () => {
                     <input type="password" name='password' placeholder="Type Your Password" className="input focus:outline-none focus:bg-red-100/30" required />
                 </div>
 
-                {success && <div className='text-center text-success mb-4 flex justify-center items-center'>
-                    <FcOk className='mr-3 text-xl' />{success}
-                </div>}
                 {error && <div className='text-center text-error mb-4 flex justify-center items-center'>
                     <FcHighPriority className='mr-3 text-xl' />{error}
                 </div>}
