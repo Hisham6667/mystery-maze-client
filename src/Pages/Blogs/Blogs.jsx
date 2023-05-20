@@ -2,8 +2,8 @@
 
 const Blogs = () => {
     return (
-        <div className="w-11/12 text-justify mx-auto">
-            <div className="text-center text-5xl mt-10 mb-20"><u>FAQs</u></div>
+        <div className="w-11/12 text-justify mx-auto mb-20">
+            <div className="text-center text-5xl mt-10 mb-20" data-aos="zoom-in"><u>FAQs</u></div>
             <div className="my-8">
                 <p className="text-3xl mb-3">
                     <span className="text-red-500">Question-1:</span> What is an access token and refresh token ? How do they work and where should we store them on the client side ?
@@ -49,6 +49,7 @@ const Blogs = () => {
                 </p>
                 <p className="text-2xl">
                     <span className="text-green-600">Answer:</span> MongoBD aggregate and its workings:<li>MongoDBs aggregation framework is a powerful tool that allows you to perform complex data analysis and transformation operations on your data within the database. It provides a way to process and combine multiple documents, applying various stages of operations to produce aggregated results.</li>
+                    <br />
                     <li>The aggregation framework works by applying a series of pipeline stages to the documents in a collection. Each stage represents an operation that modifies or processes the data in some way. The output of one stage serves as the input to the next stage, forming a chain of transformations.</li>
                 </p>
             </div>
