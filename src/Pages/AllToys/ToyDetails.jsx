@@ -1,8 +1,9 @@
 import Rating from "react-rating";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { GoPackage } from "react-icons/go";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { HiArrowSmallLeft } from "react-icons/hi2";
 
 
 const ToyDetails = () => {
@@ -32,14 +33,18 @@ const ToyDetails = () => {
                         <p className="flex items-center">
                             <GoPackage /><span className="ml-1">In stock: {quantity_available} P</span>
                         </p>
-                        <p className="flex items-center"><RiMoneyDollarCircleLine className="mr-1"/>{price}</p>
+                        <p className="flex items-center"><RiMoneyDollarCircleLine className="mr-1" />{price}</p>
                     </div>
                     <p className="flex flex-col justify-center items-center mb-4 w-11/12 mx-auto">
                         <span className="text-red-400 underline text-lg">Description</span>
                         <span className=" text-justify">{description}</span>
                     </p>
                     <hr className="w-5/6 mx-auto mb-3" />
-                    <p className="text-lg text-center"><span className="font-semibold">Contact:</span> {seller_email}</p>
+                    <div className="flex justify-between items-center">
+                        <p className="text-sm"><span className="font-semibold">Contact:</span> {seller_email}</p>
+                        <Link to='/alltoys'>
+                            <button className="btn btn-outline btn-error"><HiArrowSmallLeft />Back to alltoys</button></Link>
+                    </div>
                 </div>
             </div>
 

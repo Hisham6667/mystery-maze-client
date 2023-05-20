@@ -10,8 +10,8 @@ const Navbar = () => {
     const navLink1 = <ActiveLink to='/'>Home</ActiveLink>
     const navLink2 = <ActiveLink to='/blogs'>Blogs</ActiveLink>
     const navLink3 = <ActiveLink to='/alltoys'>All Toys</ActiveLink>
-    const navLink4 = <ActiveLink to='/mytoys'>My Toys</ActiveLink>
-    const navLink5 = <ActiveLink to='/addatoy'>Add a Toy</ActiveLink>
+    const navLink4 = <ActiveLink to='/addatoy'>Add a Toy</ActiveLink>
+    const navLink5 = <ActiveLink to='/mytoys'>My Toys</ActiveLink>
     const navLink6 = <ActiveLink to='/login'>Login</ActiveLink>
 
     const {user, exitUser} = useContext(AuthContext);
