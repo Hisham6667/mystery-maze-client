@@ -15,6 +15,7 @@ const AllToys = () => {
                     <tr>
                         <th className="text-xl">Seller Name</th>
                         <th className="text-xl">Toy Name</th>
+                        <th className="text-xl">Category</th>
                         <th className="text-xl">Price</th>
                         <th className="text-xl text-center">Available Quantity</th>
                         <th className="text-xl text-center">Details</th>
