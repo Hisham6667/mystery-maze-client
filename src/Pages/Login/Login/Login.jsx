@@ -27,18 +27,29 @@ const Login = () => {
 
         signUser(email, pass)
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
+                const user = result.user;
                 setError('')
-                form.reset();
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Welcome back! Profile login successful',
-                    showConfirmButton: false,
-                    timer: 2000
+                const loggedUser = { email: user.email }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
                 })
-                form.reset()
-                navigate(from, {replace:true})
+                    .then(res => res.json())
+                    .then(data => {
+                        // jwt token
+                        localStorage.setItem('toy-access-token', data.token)
+                        form.reset();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Welcome back! Profile login successful',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => {
                 setError(error.message)
@@ -50,20 +61,32 @@ const Login = () => {
                 })
             })
     }
-    
+
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
+                const user = result.user;
                 setError('')
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Google login successful',
-                    showConfirmButton: false,
-                    timer: 2000
+                const loggedUser = { email: user.email }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
                 })
-                navigate(from, {replace:true})
+                    .then(res => res.json())
+                    .then(data => {
+                        // jwt token
+                        localStorage.setItem('toy-access-token', data.token)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Google login successful',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => {
                 setError(error.message)

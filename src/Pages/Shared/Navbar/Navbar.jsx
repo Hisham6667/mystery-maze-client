@@ -15,6 +15,13 @@ const Navbar = () => {
     const navLink6 = <ActiveLink to='/login'>Login</ActiveLink>
 
     const {user, exitUser} = useContext(AuthContext);
+    const handleLogOut = () => {
+        exitUser()
+        .then(()=>{
+            localStorage.removeItem('toy-access-token')
+        })
+        .catch(error => console.log(error.message))
+    }
 
     return (
         <div className="navbar flex justify-between">
@@ -34,7 +41,7 @@ const Navbar = () => {
                 <span className='mx-1 p-2 hover:bg-red-500 hover:text-white transition-all rounded-xl active:bg-white active:text-black active:border active:border-red-500 active:p-1'>{navLink3}</span>
                 {user && <span className='mx-1 p-2 hover:bg-red-500 hover:text-white transition-all rounded-xl active:bg-white active:text-black active:border active:border-red-500 active:p-1'>{navLink4}</span>}
                 {user && <span className='mx-1 p-2 hover:bg-red-500 hover:text-white transition-all rounded-xl active:bg-white active:text-black active:border active:border-red-500 active:p-1'>{navLink5}</span>}
-                {user && <button onClick={exitUser} className='mx-1 p-2 hover:bg-red-500 hover:text-white transition-all rounded-xl active:bg-white active:text-black active:border active:border-red-500 active:p-1 flex justify-center items-center'>Logout<AiOutlineExport/></button>}
+                {user && <button onClick={handleLogOut} className='mx-1 p-2 hover:bg-red-500 hover:text-white transition-all rounded-xl active:bg-white active:text-black active:border active:border-red-500 active:p-1 flex justify-center items-center'>Logout<AiOutlineExport/></button>}
                 {!user &&<span className='mx-1 p-2 hover:bg-red-500 hover:text-white transition-all rounded-xl active:bg-white active:text-black active:border active:border-red-500 active:p-1 flex items-center'>{navLink6}<AiOutlineImport/></span>}
             </div>
 

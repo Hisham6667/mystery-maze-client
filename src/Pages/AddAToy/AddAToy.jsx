@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcHighPriority } from "react-icons/fc";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddAToy = () => {
+    const { user } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const handleToyAddition = event => {
@@ -16,7 +18,8 @@ const AddAToy = () => {
         const rating = parseInt(form.rating.value);
         const stock = parseInt(form.stock.value);
         const url = form.url.value;
-        const newToy = { toyName, seller, email, category, price, rating, stock, url }
+        const details = form.details.value;
+        const newToy = { toyName, seller, email, category, price, rating, stock, url, details }
 
         // validation
         if (toyName.length < 5) {
@@ -73,7 +76,17 @@ const AddAToy = () => {
                 timer: 1500
             })
         }
+        if (details.length < 10 || details.length > 100) {
+            setError('Your toy details should be in 10 to 100 letters');
+            return Swal.fire({
+                icon: 'error',
+                title: 'Your toy details should be in 10 to 100 letters',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
 
+        // fetching
         fetch('http://localhost:5000/usertoys', {
             method: 'POST',
             headers: {
@@ -85,6 +98,7 @@ const AddAToy = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
+                    form.reset()
                     Swal.fire({
                         icon: 'success',
                         title: 'Your Toy Added successfully',
@@ -106,24 +120,24 @@ const AddAToy = () => {
                 <div className="grid grid-cols-2 gap-10">
                     <div className="form-control mb-5">
                         <label className="label">
-                            <span className="label-text text-xl">Toy Name</span>
+                            <span className="label-text text-xl">Username</span>
                         </label>
-                        <input type="text" name='toyName' placeholder="Type a toy name" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
+                        <input type="text" defaultValue={user.displayName ? user.displayName : ''} name='seller' placeholder="Type Your Name" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
                     </div>
 
                     <div className="form-control mb-5">
                         <label className="label">
-                            <span className="label-text text-xl">Username</span>
+                            <span className="label-text text-xl">Email</span>
                         </label>
-                        <input type="text" name='seller' placeholder="Type Your Name" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
+                        <input type="email" defaultValue={user.email ? user.email : ''} name='email' placeholder="Type Your Email" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
                     </div>
                 </div>
                 <div className="grid grid-cols-2 gap-10">
                     <div className="form-control mb-5">
                         <label className="label">
-                            <span className="label-text text-xl">Email</span>
+                            <span className="label-text text-xl">Toy Name</span>
                         </label>
-                        <input type="email" name='email' placeholder="Type Your Email" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
+                        <input type="text" name='toyName' placeholder="Type a toy name" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
                     </div>
 
                     <div className="form-control mb-5">
@@ -161,6 +175,14 @@ const AddAToy = () => {
                             <span className="label-text text-xl">Picture URL</span>
                         </label>
                         <input type="url" name='url' placeholder="Type picture url" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
+                    </div>
+                </div>
+                <div className="mb-5">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-xl">Toy Description</span>
+                        </label>
+                        <input type="text" name='details' placeholder="Type some details about the toy" className="input focus:outline-none focus:bg-red-100/30 border border-red-100" required />
                     </div>
                 </div>
 

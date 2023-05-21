@@ -1,14 +1,71 @@
-import { useLoaderData } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserSingleToy from './UserSingleToy';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
+    const [userToys, setUserToys] = useState();
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const userToys = useLoaderData();
+    const url = `http://localhost:5000/usertoys?email=${user.email}`;
+
+    useEffect(() => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('toy-access-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.error) {
+                    setUserToys(data)
+                }
+                else {
+                    navigate('/')
+                }
+            })
+    }, [url, navigate])
+
+    const handleDeleteToy = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/usertoys/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: ('Your toy deleted successfully'),
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                })
+                                const remaining = userToys.filter(toy => toy._id !== id)
+                                setUserToys(remaining)
+                            }
+                        })
+                }
+            })
+
+    }
 
     return (
         <div className="overflow-x-auto w-full">
 
-            <div className='text-center text-red-400 font-semibold text-4xl mb-10'>We found your total {userToys.length} Toys !</div>
+            <div className='text-center text-red-400 font-semibold text-4xl mb-10'>We found your total {userToys ? userToys.length : 0} Toys !</div>
 
             <table className="table w-full">
 
@@ -26,7 +83,7 @@ const MyToys = () => {
 
                 <tbody className="text-lg">
                     {
-                        userToys.map(toy => <UserSingleToy key={toy._id} toy={toy}></UserSingleToy>)
+                        userToys && userToys.map(toy => <UserSingleToy key={toy._id} toy={toy} handleDeleteToy={handleDeleteToy}></UserSingleToy>)
                     }
                 </tbody>
 

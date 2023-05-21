@@ -1,11 +1,10 @@
-import React from 'react';
-import { HiArrowSmallRight, HiOutlinePuzzlePiece, HiUserCircle } from 'react-icons/hi2';
+import { HiOutlinePuzzlePiece, HiUserCircle } from 'react-icons/hi2';
 import { RiMoneyDollarCircleLine, RiDeleteBin6Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { RxUpdate } from "react-icons/rx";
 
-const UserSingleToy = ({ toy }) => {
-    const { toyName, seller, category, price, stock } = toy;
+const UserSingleToy = ({ toy, handleDeleteToy }) => {
+    const { _id, toyName, seller, category, price, stock } = toy;
     return (
         <tr>
             <td><p className="flex items-center"><HiUserCircle className="mr-3 text-red-400" />{seller}</p></td>
@@ -20,7 +19,7 @@ const UserSingleToy = ({ toy }) => {
             </td>
             <td className="text-center">
                 <Link>
-                    <button className="btn btn-outline btn-error"><span className='mr-1'>Delete</span><RiDeleteBin6Line /></button>
+                    <button onClick={() => handleDeleteToy(_id)} className="btn btn-outline btn-error"><span className='mr-1'>Delete</span><RiDeleteBin6Line /></button>
                 </Link>
             </td>
         </tr>
