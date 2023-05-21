@@ -96,7 +96,6 @@ const AddAToy = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     form.reset()
                     Swal.fire({
