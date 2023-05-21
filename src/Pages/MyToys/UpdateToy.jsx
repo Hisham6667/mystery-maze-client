@@ -49,7 +49,7 @@ const UpdateToy = () => {
         }
 
         // fetching
-        fetch(`http://localhost:5000/usertoys/${_id}`, {
+        fetch(`https://toy-store-server-jet.vercel.app/usertoys/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
