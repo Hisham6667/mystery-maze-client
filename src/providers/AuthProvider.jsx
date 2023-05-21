@@ -8,7 +8,7 @@ const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
 
@@ -20,7 +20,7 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const unSub = onAuthStateChanged(auth, currentUser => {
             console.log('from auth state', currentUser);
             setUser(currentUser);
@@ -29,7 +29,7 @@ const AuthProvider = ({children}) => {
         return () => {
             unSub()
         }
-    },[])
+    }, [])
 
     const googleLogin = () => {
         return signInWithPopup(auth, googleProvider)

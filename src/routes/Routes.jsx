@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: '/alltoys/:id',
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://toy-store-server-jet.vercel.app/alltoys/${params.id}`)
+                loader: ({ params }) => fetch(`https://toy-store-server-jet.vercel.app/alltoys/${params.id}`)
             },
             {
                 path: '/addatoy',
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             {
                 path: '/updatetoy/:id',
                 element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
-                loader: ({params}) => fetch(`https://toy-store-server-jet.vercel.app/usertoys/${params.id}`)
+                loader: ({ params }) => fetch(`https://toy-store-server-jet.vercel.app/usertoys/${params.id}`)
             },
             {
                 path: '/login',
@@ -63,6 +63,6 @@ const router = createBrowserRouter([
         element: <Error></Error>
     }
 ])
-    
+
 
 export default router;

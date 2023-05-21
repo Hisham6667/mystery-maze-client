@@ -5,7 +5,6 @@ import { GoPackage } from "react-icons/go";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { HiArrowSmallLeft } from "react-icons/hi2";
 
-
 const ToyDetails = () => {
     const toy = useLoaderData();
     const { picture_url, name, seller_name, seller_email, price, rating, quantity_available, description } = toy;

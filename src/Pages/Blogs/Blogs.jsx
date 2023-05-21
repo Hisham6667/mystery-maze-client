@@ -25,7 +25,7 @@ const Blogs = () => {
                     <span className="text-green-600">Answer:</span> SQL database: <li>SQL databases are known as relational databases, follow a structured data model. They organize data into tables with predefined schemas, consisting of rows and columns.</li>
                     <li>These databases typically operate on a single server, known as vertical scaling.</li>
                     <br />
-                    No-SQL database: 
+                    No-SQL database:
                     <li>NoSQL databases employ a non-relational or schema-less data model. They can store data in various formats like key-value pairs, documents, wide-column stores, or graphs.</li>
                     <li>these databases, in contrast, are designed to scale horizontally, which means they can distribute the data across multiple servers.</li>
                 </p>
@@ -37,8 +37,8 @@ const Blogs = () => {
                 </p>
                 <p className="text-2xl">
                     <span className="text-green-600">Answer:</span> Express JS: <li>ExpressJs is a lightweight and flexible web application framework.</li>
-                    Nest JS: <li>NestJs is a scalable and structured framework inspired by Angular, designed for building server-side 
-                    applications.</li>
+                    Nest JS: <li>NestJs is a scalable and structured framework inspired by Angular, designed for building server-side
+                        applications.</li>
                     In summery: Both frameworks have their strengths and are widely used in the Node.js ecosystem. The choice between them depends on the specific requirements and preferences of the project at hand.
                 </p>
             </div>

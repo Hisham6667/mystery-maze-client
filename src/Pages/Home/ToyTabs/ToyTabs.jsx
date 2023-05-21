@@ -18,7 +18,7 @@ const ToyTabs = () => {
                         <Tab>Mechanical Puzzles</Tab>
                     </TabList>
                 </div>
-                
+
                 <TabPanel className='mx-auto'>
                     <div className='grid grid-cols-2 gap-10' data-aos="zoom-in">
                         <div className="flex flex-col items-center py-5">
@@ -48,7 +48,7 @@ const ToyTabs = () => {
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div className="flex flex-col items-center py-5">
                             <div className='mb-5'>
                                 <img src="https://i.ibb.co/Hq2jGj6/historical-Masterpieces.jpg" className="rounded-full w-64 h-64 p-2" />
@@ -78,7 +78,7 @@ const ToyTabs = () => {
                         </div>
                     </div>
                 </TabPanel>
-                
+
                 <TabPanel className='mx-auto'>
                     <div className='grid grid-cols-2 gap-10' data-aos="zoom-in">
                         <div className="flex flex-col items-center py-5">
@@ -108,7 +108,7 @@ const ToyTabs = () => {
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div className="flex flex-col items-center py-5">
                             <div className='mb-5'>
                                 <img src="https://i.ibb.co/7WQ6xrw/settlers-Of-Catan.jpg" className="rounded-full w-64 h-64 p-2" />
@@ -168,7 +168,7 @@ const ToyTabs = () => {
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div className="flex flex-col items-center py-5">
                             <div className='mb-5'>
                                 <img src="https://i.ibb.co/2q61TLH/GearMaze.png" className="rounded-full w-64 h-64 p-2" />
