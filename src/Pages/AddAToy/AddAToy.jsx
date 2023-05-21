@@ -17,7 +17,6 @@ const AddAToy = () => {
         const stock = parseInt(form.stock.value);
         const url = form.url.value;
         const newToy = { toyName, seller, email, category, price, rating, stock, url }
-        console.log(newToy);
 
         // validation
         if (toyName.length < 5) {

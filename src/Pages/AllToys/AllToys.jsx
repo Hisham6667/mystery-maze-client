@@ -9,6 +9,8 @@ const AllToys = () => {
     return (
         <div className="overflow-x-auto w-full">
 
+            <div className='text-center text-red-400 font-semibold text-4xl mb-10'>We have total {allToys.length} Toys here !</div>
+
             <table className="table w-full">
 
                 <thead>
