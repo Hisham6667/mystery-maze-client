@@ -37,6 +37,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 2000
                 })
+                form.reset()
                 navigate(from, {replace:true})
             })
             .catch(error => {
