@@ -10,6 +10,7 @@ import Blogs from "../Pages/Blogs/Blogs";
 import MyToys from "../Pages/MyToys/MyToys";
 import AddAToy from "../Pages/AddAToy/AddAToy";
 import ToyDetails from "../Pages/AllToys/ToyDetails";
+import UpdateToy from "../Pages/MyToys/UpdateToy";
 
 const router = createBrowserRouter([
     {
@@ -27,12 +28,12 @@ const router = createBrowserRouter([
             {
                 path: '/alltoys',
                 element: <AllToys></AllToys>,
-                loader: () => fetch('http://localhost:5000/alltoys')
+                loader: () => fetch('https://toy-store-server-jet.vercel.app/alltoys')
             },
             {
                 path: '/alltoys/:id',
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/alltoys/${params.id}`)
+                loader: ({params}) => fetch(`https://toy-store-server-jet.vercel.app/alltoys/${params.id}`)
             },
             {
                 path: '/addatoy',
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
             {
                 path: '/mytoys',
                 element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+            },
+            {
+                path: '/updatetoy/:id',
+                element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
+                loader: ({params}) => fetch(`https://toy-store-server-jet.vercel.app/usertoys/${params.id}`)
             },
             {
                 path: '/login',

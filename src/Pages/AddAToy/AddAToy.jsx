@@ -87,7 +87,7 @@ const AddAToy = () => {
         }
 
         // fetching
-        fetch('http://localhost:5000/usertoys', {
+        fetch('https://toy-store-server-jet.vercel.app/usertoys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -9,7 +9,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const url = `http://localhost:5000/usertoys?email=${user.email}`;
+    const url = `https://toy-store-server-jet.vercel.app/usertoys?email=${user.email}`;
 
     useEffect(() => {
         fetch(url, {
@@ -25,6 +25,12 @@ const MyToys = () => {
                 }
                 else {
                     navigate('/')
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Your token has expired Please Login again to see your toys',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
                 }
             })
     }, [url, navigate])
@@ -41,7 +47,7 @@ const MyToys = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/usertoys/${id}`, {
+                    fetch(`https://toy-store-server-jet.vercel.app/usertoys/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

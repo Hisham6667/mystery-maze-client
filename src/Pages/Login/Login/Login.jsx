@@ -30,7 +30,7 @@ const Login = () => {
                 const user = result.user;
                 setError('')
                 const loggedUser = { email: user.email }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://toy-store-server-jet.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -68,7 +68,7 @@ const Login = () => {
                 const user = result.user;
                 setError('')
                 const loggedUser = { email: user.email }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://toy-store-server-jet.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

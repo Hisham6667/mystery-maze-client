@@ -13,7 +13,7 @@ const UserSingleToy = ({ toy, handleDeleteToy }) => {
             <td><p className="flex items-center"><RiMoneyDollarCircleLine className="mr-2 text-red-400" />{price}</p></td>
             <td className="text-center"><b>{stock}</b> pieces in stock</td>
             <td className="text-center">
-                <Link>
+                <Link to={`/updatetoy/${_id}`}>
                     <button className="btn btn-outline btn-info"><span className='mr-1'>Update</span><RxUpdate /></button>
                 </Link>
             </td>
